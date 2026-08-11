@@ -16,10 +16,10 @@ public class BinarySearchRec {
             }
 
             else if( arr[mid] > target){
-                BSrec(arr, target, start, mid);
+                return BSrec(arr, target, start, mid);
             }
             else{
-                BSrec(arr, target, mid+1, end);
+                return BSrec(arr, target, mid+1, end);
             }
         }
         return -1 ;
