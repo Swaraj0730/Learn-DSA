@@ -1,3 +1,4 @@
+package Mis;
 class MergeSort{
 
     public static  void merge(int arr[] ,int start, int mid , int last){

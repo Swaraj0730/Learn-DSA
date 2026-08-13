@@ -1,3 +1,4 @@
+package Mis;
 public class CanReach {
 
     public boolean canReach(String s, int minJump, int maxJump) {

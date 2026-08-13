@@ -1,3 +1,4 @@
+package Mis;
 public class Seive {
 
     // false in array means number is prime

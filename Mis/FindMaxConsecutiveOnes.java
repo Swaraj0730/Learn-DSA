@@ -1,3 +1,4 @@
+package Mis;
 public class FindMaxConsecutiveOnes{
 
     public static int findMaxConsecutiveOnes(int[] nums) {

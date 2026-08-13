@@ -1,3 +1,4 @@
+package Mis;
 import java.util.Arrays;
 
 public class missingNumber{
