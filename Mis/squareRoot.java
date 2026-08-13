@@ -1,4 +1,4 @@
-package Mis;
+package Mis;    
 public class squareRoot {
 
     public static double findSquareRoot(int n, int p){
