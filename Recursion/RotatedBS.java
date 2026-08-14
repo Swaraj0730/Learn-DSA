@@ -1,0 +1,41 @@
+package Recursion;
+
+public class RotatedBS {
+
+    public static int rotatedBinarySearch(int[] arr, int target, int start, int end){
+
+    if(start > end){
+        return -1;
+    }
+
+    int mid = start + (end - start) / 2;
+
+    if(arr[mid] == target){
+        return mid;
+    }
+
+    // Left half is sorted
+    if(arr[start] <= arr[mid]){
+        if(target >= arr[start] && target < arr[mid]){
+            return rotatedBinarySearch(arr, target, start, mid - 1);
+        } else {
+            return rotatedBinarySearch(arr, target, mid + 1, end);
+        }
+    }
+
+    // Right half is sorted
+    if(target > arr[mid] && target <= arr[end]){
+        return rotatedBinarySearch(arr, target, mid + 1, end);
+    }
+
+    return rotatedBinarySearch(arr, target, start, mid - 1);
+}
+    public static void main(String[] args) {
+
+        int[] arr = {5, 6, 7, 8, 9, 1, 2, 3};
+
+        System.out.println(rotatedBinarySearch(arr, 8, 0, arr.length - 1));
+        
+    }
+    
+}
