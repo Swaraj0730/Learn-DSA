@@ -39,27 +39,13 @@ public class rollDice {
         }
     }
 
-    public static int rollwithFace2(int n , int target , int face){
 
-        if(target == 0 ){
-            return 1 ;
-        }
-        
-        int count = 0 ;
-        for(int i = 1 ; i <= face && i <= target ; i++){
-            count = count + rollwithFace2(n + i , target - i , face);
-        }
-        return count ;
-    }
-    
 
     public static void main(String[] args) {
 
         // roll("", 4);
         // System.out.println(rollList("", 4));
         // rollwithFace("", 4, 7);
-
-        System.out.println(rollwithFace2(2, 3, 6));
         
     }
     
