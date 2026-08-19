@@ -3,7 +3,6 @@ package LinkedList;
 public class linkedList {
 
     static Node head;
-    static Node tail;
 
     static class Node {
 
@@ -141,6 +140,24 @@ public class linkedList {
         temp.next = temp.next.next ;
     }
 
+    public static Node insertKthRec(int data, int k, Node node){
+
+        if( k == 0 ){
+            Node temp = new Node(data);
+            temp.next = node ;
+            return temp ;
+        }
+
+        node.next = insertKthRec(data, k-1 , node.next);
+        return node ;
+    }   
+
+    public static void insertRec(int val, int k){
+
+        head = insertKthRec(val, k, head) ;
+        
+    }
+
 
     public static void main(String[] args) {
 
@@ -155,8 +172,8 @@ public class linkedList {
         list.printList();
 
         int size = list.size();
-       
-        list.deleteKth(3, size);
+        
+        list.insertRec(88, 2);
 
         list.printList();
 

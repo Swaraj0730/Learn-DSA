@@ -1,6 +1,5 @@
 package LinkedList;
 
-import BitWise.noSetBits;
 
 public class DoubleLL {
 
