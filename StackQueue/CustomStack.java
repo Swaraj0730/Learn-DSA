@@ -16,10 +16,53 @@ public class CustomStack {
         this.data = new int[size] ;
     }
 
+    public boolean push(int item) {
 
-
-    public static void main(String[] args) {
-        
+       if(isFull()){
+           System.out.println("Stack is full");
+           return false ;
+       }
+        ptr++;
+        data[ptr] = item;
+        return true;
     }
-    
+
+    private boolean isFull() {
+        return ptr == data.length - 1 ;
+    }
+
+    private boolean isEmpty() {
+        return ptr == -1 ;
+    }
+
+    public int pop() throws Exception {
+        if (isEmpty()) {
+            throw new Exception("Stack Empty");
+        }
+        return data[ptr--];
+    }
+
+    public int peek() throws Exception {
+        if(isEmpty()){
+            throw new Exception("Stack Empty") ;
+        }
+        return data[ptr];
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        CustomStack cstk = new CustomStack(5);
+
+        cstk.push(34);
+        cstk.push(36);
+        cstk.push(37);
+        cstk.push(38);
+
+        System.out.println(cstk);
+
+        while (!cstk.isEmpty()) {
+            int val = cstk.pop();
+            System.out.println(val);
+        }
+    }
 }
