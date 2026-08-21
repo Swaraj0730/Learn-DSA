@@ -27,11 +27,11 @@ public class CustomStack {
         return true;
     }
 
-    private boolean isFull() {
+    public boolean isFull() {
         return ptr == data.length - 1 ;
     }
 
-    private boolean isEmpty() {
+    public boolean isEmpty() {
         return ptr == -1 ;
     }
 
@@ -51,17 +51,44 @@ public class CustomStack {
 
     public static void main(String[] args) throws Exception {
 
-        CustomStack cstk = new CustomStack(5);
+//        CustomStack cstk = new CustomStack(5);
+//
+//        cstk.push(34);
+//        cstk.push(36);
+//        cstk.push(37);
+//        cstk.push(38);
+//
+//        System.out.println(cstk);
+//
+//        while (!cstk.isEmpty()) {
+//            int val = cstk.pop();
+//            System.out.println(val);
+//        }
+        DynamicStack ds = new DynamicStack(5);
 
-        cstk.push(34);
-        cstk.push(36);
-        cstk.push(37);
-        cstk.push(38);
+        ds.push(21);
+        ds.push(22);
+        ds.push(23);
+        ds.push(24);
+        ds.push(25);
+        ds.push(21);
+        ds.push(22);
+        ds.push(23);
+        ds.push(24);
+        ds.push(25);
+        ds.push(21);
+        ds.push(22);
+        ds.push(23);
+        ds.push(24);
+        ds.push(25);
+        ds.push(21);
+        ds.push(22);
+        ds.push(23);
+        ds.push(24);
+        ds.push(25);
 
-        System.out.println(cstk);
-
-        while (!cstk.isEmpty()) {
-            int val = cstk.pop();
+        while(!ds.isEmpty()){
+            int val = ds.pop();
             System.out.println(val);
         }
     }
