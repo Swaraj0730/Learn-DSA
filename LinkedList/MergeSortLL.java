@@ -2,7 +2,7 @@ package LinkedList;
 
 public class MergeSortLL {
 
-     static Node head;
+    static Node head;
 
     static class Node {
 
