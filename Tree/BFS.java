@@ -351,6 +351,39 @@ public class BFS {
         return helper(node.left, arr, n+1) || helper(node.right, arr, n+1);
     }
 
+    public int countPaths(Node node, int sum){
+
+        List<Integer> path = new LinkedList<>();
+        return countHelper(node, sum, path);
+    }
+
+    public int countHelper(Node node, int sum, List<Integer> path){
+
+        if( node == null){
+            return 0;
+        }
+        path.add(node.val);
+        int count = 0 ;
+        int s = 0 ;
+
+        ListIterator<Integer> itr = path.listIterator(path.size());
+
+        while(itr.hasPrevious()){
+            s += itr.previous() ;
+
+            if( s == sum){
+                count++ ;
+            }
+        }
+
+        count += countHelper(node.left, sum , path) + countHelper(node.right, s, path);
+
+        //backtrack ;
+        path.remove(path.size() - 1);
+
+        return count ;
+    }
+
     public static void main(String[] args){
 
          BFS bfs = new BFS() ;
