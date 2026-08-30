@@ -1,5 +1,6 @@
 package Tree;
 
+import javax.crypto.spec.PSource;
 import java.net.StandardSocketOptions;
 import java.sql.SQLOutput;
 import java.util.*;
@@ -166,7 +167,7 @@ public class BFS {
         q.offer(node);
 
         while(!q.isEmpty()){
-            int levelSize = q.size();
+
             Node currNode = q.poll() ;
 
             if(currNode.left != null){
@@ -258,6 +259,98 @@ public class BFS {
 
     }
 
+    public String serialize(){
+        return serialize(this.root) ;
+    }
+
+    private String serialize(Node root) {
+        String str = new String();
+        return helper(root, str);
+    }
+
+    public String helper(Node node, String str){
+
+        if( node == null ){
+            return str + " null " ;
+        }
+
+        str = str + String.valueOf(node.val + " ");
+
+        str =  helper(node.left, str);
+        str = helper(node.right, str);
+
+        return str ;
+    }
+
+    public Node deserialize(String str){
+
+        String[] arr = str.split("n");
+        return helper2(arr);
+    }
+
+    int idx = 0 ;
+    public Node helper2(String[] str){
+        if(str[idx].equals("null")){
+            idx++;
+            return null ;
+        }
+
+        Node node = new Node(Integer.parseInt(str[idx]));
+
+        node.left = helper2(str);
+        node.right = helper2(str);
+
+        return node ;
+    }
+
+    public int sumNumbers(){
+        return sumNumbers(this.root);
+    }
+
+
+    private int sumNumbers(Node node){
+
+        if(node == null){
+            return 0 ;
+        }
+        int sum = 0 ;
+
+        if(node.left == null && node.right == null){
+            return sum ;
+        }
+        int i = sumNumbers(node.left) * 10 ;
+        int j = sumNumbers(node.right) * 10 ;
+        sum = i + j ;
+
+        return sum  ;
+    }
+
+    public boolean findPath(Node node, int[] arr){
+
+        if(node == null){
+            return false;
+        }
+
+        return helper(node, arr, 0);
+    }
+
+    public boolean helper(Node node, int[] arr, int n){
+
+        if(node == null){
+            return false;
+        }
+
+        if(n >= arr.length ||  node.val != arr[n]){
+            return false;
+        }
+
+        if(node.left == null && node.right == null && n == arr.length-1){
+            return true ;
+        }
+
+        return helper(node.left, arr, n+1) || helper(node.right, arr, n+1);
+    }
+
     public static void main(String[] args){
 
          BFS bfs = new BFS() ;
@@ -265,9 +358,7 @@ public class BFS {
         int[] nums = {3,9,20,15,7};
         bfs.populate(nums);
 
-
-
-        System.out.println(bfs.findNode(9));
+        System.out.println(bfs.sumNumbers());
 
 
 
