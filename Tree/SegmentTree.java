@@ -20,6 +20,7 @@ public class SegmentTree {
     Node root ;
 
     public SegmentTree(int[] arr){
+
         this.root = constructTree(arr, 0, arr.length-1);
     }
 
@@ -79,6 +80,7 @@ public class SegmentTree {
     }
 
     public int query(int qstart , int qend){
+
         return query(this.root, qstart , qend);
     }
 
@@ -99,8 +101,10 @@ public class SegmentTree {
 
     //update
     public void update(int index, int value){
+
         this.root.val = update(root, index, value);
     }
+
     private int update(Node node , int index, int value){
 
         if(index >= node.start && index <= node.end){
