@@ -90,6 +90,10 @@ public class Heaps<T extends Comparable<T>> {
          return list ;
      }
 
+    public int size() {
+         return list.size();
+    }
+
     public static void main(String[] args) throws Exception{
 
          Heaps<Integer> heap = new Heaps<Integer>();
