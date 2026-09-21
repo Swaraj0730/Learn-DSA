@@ -8,7 +8,7 @@ public class question2 {
 
     static void main() {
 
-        int[] arr = {4, 2, 10, 6, 8, 16, 12};
+        int[] arr = {4, 2, 2, 2, 3 , 5, 7, 2, 2};
 //        Arrays.sort(arr);
 //        int n = 5 ;
 //        int ans = 0 ;
@@ -22,7 +22,7 @@ public class question2 {
 //        }
 //        System.out.println(ans);
 
-        System.out.println(findMissing(arr, arr.length));
+        System.out.println(majorityElement(arr, arr.length));
     }
 
     public static int findMissing(int arr[] , int size){
@@ -39,5 +39,21 @@ public class question2 {
             }
         }
         return -1 ;
+    }
+
+    public static int majorityElement(int[] arr, int len){
+
+        HashMap<Integer, Integer> map = new HashMap<>() ;
+
+        for(int i : arr){
+            map.put(i, map.getOrDefault(i, 0)+1);
+        }
+
+        for(int key : map.keySet()){
+            if(map.get(key) > len/2){
+                return key ;
+            }
+        }
+        return 0;
     }
 }
