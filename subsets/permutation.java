@@ -1,6 +1,8 @@
 package subsets;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class permutation {
 
@@ -54,11 +56,31 @@ public class permutation {
         return count ;
     }
 
+    public static Set<String> permutationsSet(String p, String up){
+
+        if(up.isEmpty()){
+            Set<String> list = new HashSet<>();
+            list.add(p) ;
+            return list ;
+        }
+
+        char ch = up.charAt(0) ;
+        Set<String> str = new HashSet<>();
+
+        for(int i = 0 ; i <= p.length() ; i++){
+            String f = p.substring(0, i) ;
+            String s = p.substring(i, p.length()) ;
+            str.addAll(permutationsSet( f+ ch + s , up.substring(1)));
+        }
+        return str ;
+    }
+
     public static void main(String[] args) {
         
-        Permutation("", "abc");
-        System.out.println(permArrayList("","abc"));
-        System.out.println(permutationCount("", "abc"));
+       // Permutation("", "ab");
+        //System.out.println(permArrayList("","abc"));
+        //System.out.println(permutationCount("", "abc"));
+        System.out.println(permutationsSet("", "ab"));
     }
     
 }
